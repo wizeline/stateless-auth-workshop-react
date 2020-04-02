@@ -21,6 +21,10 @@ const AuthProvider = ({ children }) => {
     const [authError, setAuthError] = React.useState('');
 
     const isAuthorized = (role) => {
+        if (!role) {
+            return true;
+        }
+        
         return user.roles.includes(role);
     }
 

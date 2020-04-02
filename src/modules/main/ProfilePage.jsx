@@ -2,13 +2,14 @@ import React from 'react';
 
 import { useAuth } from '../auth/AuthProvider';
 import SecuredContent from '../security/SecuredContent';
+import apiClient from '../api/apiClient';
 
 const ProfilePage = () => {
     const { user } = useAuth();
 
     const deleteHandler = () => {
         if (window.confirm('Are you sure?')) {
-            console.warn('TODO: implement delete...')
+            apiClient.delete('me');
         }
     }
 

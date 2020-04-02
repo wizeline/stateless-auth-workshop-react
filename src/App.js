@@ -22,7 +22,7 @@ function App() {
           <Router>
             <LoginPage path="login" />
             <SignUpPage path="signup" />
-            <PrivateRoute path="profile" redirect="login" component={ProfilePage} />
+            <PrivateRoute path="profile" redirect="/login" component={ProfilePage} />
             <HomePage default />
           </Router>
         </div>
