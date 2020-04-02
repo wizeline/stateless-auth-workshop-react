@@ -21,10 +21,6 @@ const AuthProvider = ({ children }) => {
     const [authError, setAuthError] = React.useState('');
 
     const isAuthorized = (role) => {
-        if (!role) {
-            return true;
-        }
-
         return user.roles.includes(role);
     }
 
@@ -32,11 +28,12 @@ const AuthProvider = ({ children }) => {
         setIsLoading(true);
         setAuthError('');
 
-        const metadata = { roles: ['ADMIN', 'EDITOR'].join(',') };
-        const error = await signup(username, email, password, metadata);
+        const error = await signup(username, email, password);
+
+        setIsLoading(false);
 
         if (error) {
-            setAuthError(error.description);
+            setAuthError('Error while registering new user');
         } else {
             loginFn(username, password)
         }
